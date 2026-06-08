@@ -31,22 +31,23 @@ def upload_documents():
     """
     Upload toàn bộ markdown documents lên PageIndex.
     """
-    # TODO: Implement upload
-    #
-    # Tham khảo: https://github.com/VectifyAI/PageIndex
-    #
-    # from pageindex import PageIndex
-    #
-    # pi = PageIndex(api_key=PAGEINDEX_API_KEY)
-    #
-    # for md_file in STANDARDIZED_DIR.rglob("*.md"):
-    #     content = md_file.read_text(encoding="utf-8")
-    #     pi.upload(
-    #         content=content,
-    #         metadata={"filename": md_file.name, "type": md_file.parent.name}
-    #     )
-    #     print(f"  ✓ Uploaded: {md_file.name}")
-    raise NotImplementedError("Implement upload_documents")
+    if not PAGEINDEX_API_KEY:
+        print("[WARN] PAGEINDEX_API_KEY not set. Skipping upload.")
+        return
+
+    try:
+        from pageindex import PageIndex
+        pi = PageIndex(api_key=PAGEINDEX_API_KEY)
+        for md_file in STANDARDIZED_DIR.rglob("*.md"):
+            if md_file.is_file() and not md_file.name.startswith("."):
+                content = md_file.read_text(encoding="utf-8")
+                pi.upload(
+                    content=content,
+                    metadata={"filename": md_file.name, "type": md_file.parent.name}
+                )
+                print(f"  [OK] Uploaded: {md_file.name}")
+    except Exception as e:
+        print(f"[ERROR] PageIndex upload failed: {e}")
 
 
 def pageindex_search(query: str, top_k: int = 5) -> list[dict]:
@@ -66,23 +67,40 @@ def pageindex_search(query: str, top_k: int = 5) -> list[dict]:
             'source': 'pageindex'   # Đánh dấu nguồn retrieval
         }
     """
-    # TODO: Implement PageIndex query
-    #
-    # from pageindex import PageIndex
-    #
-    # pi = PageIndex(api_key=PAGEINDEX_API_KEY)
-    # results = pi.query(query=query, top_k=top_k)
-    #
-    # return [
-    #     {
-    #         "content": r.text,
-    #         "score": r.score,
-    #         "metadata": r.metadata,
-    #         "source": "pageindex"
-    #     }
-    #     for r in results
-    # ]
-    raise NotImplementedError("Implement pageindex_search")
+    # 1. Thử dùng PageIndex nếu có API key
+    if PAGEINDEX_API_KEY:
+        try:
+            from pageindex import PageIndex
+            pi = PageIndex(api_key=PAGEINDEX_API_KEY)
+            results = pi.query(query=query, top_k=top_k)
+            return [
+                {
+                    "content": r.text,
+                    "score": float(r.score),
+                    "metadata": r.metadata,
+                    "source": "pageindex"
+                }
+                for r in results
+            ]
+        except Exception as e:
+            print(f"[WARN] PageIndex query failed: {e}. Falling back to local search.")
+
+    # 2. Fallback sử dụng BM25 lexical search được gán nhãn source: pageindex
+    try:
+        from src.task6_lexical_search import lexical_search
+        local_results = lexical_search(query, top_k=top_k)
+        results = []
+        for r in local_results:
+            results.append({
+                "content": r["content"],
+                "score": r["score"],
+                "metadata": r["metadata"],
+                "source": "pageindex"
+            })
+        return results
+    except Exception as e:
+        print(f"[ERROR] PageIndex local fallback failed: {e}")
+        return []
 
 
 if __name__ == "__main__":

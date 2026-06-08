@@ -10,6 +10,36 @@ Yêu cầu:
 """
 
 
+import json
+import sys
+from pathlib import Path
+import numpy as np
+from sentence_transformers import SentenceTransformer
+
+# Configure UTF-8 encoding support for Windows terminal prints
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+if hasattr(sys.stderr, "reconfigure"):
+    try:
+        sys.stderr.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
+VECTORSTORE_FILE = Path(__file__).parent.parent / "data" / "vectorstore.json"
+EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+
+_model = None
+
+def get_embedding_model():
+    global _model
+    if _model is None:
+        _model = SentenceTransformer(EMBEDDING_MODEL)
+    return _model
+
+
 def semantic_search(query: str, top_k: int = 10) -> list[dict]:
     """
     Tìm kiếm ngữ nghĩa sử dụng vector similarity.
@@ -26,37 +56,46 @@ def semantic_search(query: str, top_k: int = 10) -> list[dict]:
         }
         Sorted by score descending.
     """
-    # TODO: Implement semantic search
-    #
-    # Bước 1: Embed query bằng cùng model ở Task 4
-    # Bước 2: Query vector store (cosine similarity)
-    # Bước 3: Return top_k results
-    #
-    # Ví dụ với Weaviate:
-    # import weaviate
-    # from sentence_transformers import SentenceTransformer
-    #
-    # model = SentenceTransformer("BAAI/bge-m3")
-    # query_embedding = model.encode(query).tolist()
-    #
-    # client = weaviate.connect_to_local()
-    # collection = client.collections.get("DrugLawDocs")
-    #
-    # results = collection.query.near_vector(
-    #     near_vector=query_embedding,
-    #     limit=top_k,
-    #     return_metadata=MetadataQuery(distance=True)
-    # )
-    #
-    # return [
-    #     {
-    #         "content": obj.properties["content"],
-    #         "score": 1 - obj.metadata.distance,  # distance → similarity
-    #         "metadata": {"source": obj.properties["source"], ...}
-    #     }
-    #     for obj in results.objects
-    # ]
-    raise NotImplementedError("Implement semantic_search")
+    if not VECTORSTORE_FILE.exists():
+        print(f"[WARN] Vector store does not exist at {VECTORSTORE_FILE}. Please run task4 first.")
+        return []
+
+    # Load vector store
+    try:
+        chunks = json.loads(VECTORSTORE_FILE.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"[ERROR] Failed to load vector store: {e}")
+        return []
+
+    if not chunks:
+        return []
+
+    # Load model and embed query
+    model = get_embedding_model()
+    query_vector = model.encode(query)
+    query_vector = np.array(query_vector)
+
+    query_norm = np.linalg.norm(query_vector)
+
+    results = []
+    for chunk in chunks:
+        chunk_vector = np.array(chunk["embedding"])
+        chunk_norm = np.linalg.norm(chunk_vector)
+        
+        if query_norm == 0 or chunk_norm == 0:
+            score = 0.0
+        else:
+            score = float(np.dot(query_vector, chunk_vector) / (query_norm * chunk_norm))
+
+        results.append({
+            "content": chunk["content"],
+            "score": score,
+            "metadata": chunk.get("metadata", {})
+        })
+
+    # Sắp xếp giảm dần theo score
+    results.sort(key=lambda x: x["score"], reverse=True)
+    return results[:top_k]
 
 
 if __name__ == "__main__":

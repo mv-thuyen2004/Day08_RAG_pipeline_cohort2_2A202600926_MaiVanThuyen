@@ -1,17 +1,77 @@
 [
   {
-    "question": "Hình phạt cho tội tàng trữ trái phép chất ma tuý theo Điều 249 Bộ luật Hình sự?",
-    "expected_answer": "Phạt tù từ 1 đến 5 năm đối với trường hợp tàng trữ từ 1g đến dưới 5g heroin hoặc cocaine, hoặc chất ma tuý khác với khối lượng tương đương.",
+    "question": "Luật Phòng chống ma tuý 2021 quy định các biện pháp cai nghiện ma tuý nào?",
+    "expected_answer": "Luật Phòng chống ma tuý 2021 quy định hai biện pháp cai nghiện ma tuý là: (1) Cai nghiện ma tuý tự nguyện và (2) Cai nghiện ma tuý bắt buộc.",
+    "expected_context": "Luật Phòng chống ma tuý 2021, Điều 28"
+  },
+  {
+    "question": "Đối tượng nào phải chịu biện pháp cai nghiện ma tuý bắt buộc theo quy định Luật 2021?",
+    "expected_answer": "Người nghiện ma túy từ đủ 18 tuổi trở lên bị áp dụng biện pháp xử lý hành chính đưa vào cơ sở cai nghiện bắt buộc khi: không đăng ký, không thực hiện hoặc tự ý chấm dứt cai nghiện tự nguyện; bị phát hiện sử dụng trái phép chất ma túy trong thời gian cai nghiện tự nguyện; người nghiện ma túy đá hoặc các chất ma túy có tính chất gây nghiện cực mạnh khác có hành vi xâm phạm trật tự an toàn xã hội.",
+    "expected_context": "Luật Phòng chống ma tuý 2021, Điều 32"
+  },
+  {
+    "question": "Người nghiện ma túy từ đủ 12 tuổi đến dưới 18 tuổi bị đưa vào cơ sở cai nghiện bắt buộc trong trường hợp nào?",
+    "expected_answer": "Người nghiện ma túy từ đủ 12 tuổi đến dưới 18 tuổi bị đưa vào cơ sở cai nghiện bắt buộc khi: không đăng ký, không thực hiện hoặc tự ý chấm dứt cai nghiện tự nguyện; hoặc bị phát hiện sử dụng trái phép chất ma túy trong thời gian cai nghiện tự nguyện.",
+    "expected_context": "Luật Phòng chống ma tuý 2021, Điều 33"
+  },
+  {
+    "question": "Thời hạn cai nghiện ma tuý bắt buộc đối với người từ đủ 12 tuổi đến dưới 18 tuổi là bao lâu?",
+    "expected_answer": "Thời hạn cai nghiện ma túy bắt buộc đối với người từ đủ 12 tuổi đến dưới 18 tuổi là từ đủ 06 tháng đến 12 tháng.",
+    "expected_context": "Luật Phòng chống ma tuý 2021, Điều 33"
+  },
+  {
+    "question": "Trách nhiệm của gia đình người nghiện ma túy trong việc cai nghiện ma túy là gì?",
+    "expected_answer": "Gia đình người nghiện ma túy có trách nhiệm: Cung cấp thông tin về tình trạng nghiện ma túy của người thân cho cơ quan chức năng; Động viên, giúp đỡ, quản lý người nghiện cai nghiện tự nguyện; Đóng góp kinh phí cai nghiện theo quy định; Hỗ trợ người sau cai nghiện hòa nhập cộng đồng, phòng chống tái nghiện.",
+    "expected_context": "Luật Phòng chống ma tuý 2021, Điều 37"
+  },
+  {
+    "question": "Tội tàng trữ trái phép chất ma tuý bị phạt tù cao nhất là bao nhiêu năm theo Điều 249 Bộ luật Hình sự?",
+    "expected_answer": "Tội tàng trữ trái phép chất ma túy theo Điều 249 Bộ luật Hình sự bị phạt tù cao nhất là tù chung thân.",
     "expected_context": "Bộ luật Hình sự 2015, Điều 249"
   },
   {
-    "question": "Luật Phòng chống ma tuý 2021 quy định những hình thức cai nghiện nào?",
-    "expected_answer": "Cai nghiện tự nguyện tại gia đình, cai nghiện tự nguyện tại cộng đồng, cai nghiện tự nguyện tại cơ sở cai nghiện, và cai nghiện bắt buộc tại cơ sở cai nghiện.",
-    "expected_context": "Luật Phòng chống ma tuý 2021, Chương V"
+    "question": "Khung hình phạt cơ bản (khoản 1) cho tội tàng trữ trái phép chất ma tuý là bao nhiêu năm tù?",
+    "expected_answer": "Khung hình phạt cơ bản cho tội tàng trữ trái phép chất ma túy tại khoản 1 Điều 249 là phạt tù từ 01 năm đến 05 năm.",
+    "expected_context": "Bộ luật Hình sự 2015, Điều 249"
   },
   {
-    "question": "Danh mục các chất ma tuý thuộc nhóm I theo quy định pháp luật Việt Nam gồm những chất nào?",
-    "expected_answer": "Nhóm I gồm các chất ma tuý tuyệt đối cấm sử dụng trong y học và đời sống, bao gồm heroin, cocaine, methamphetamine, MDMA (ecstasy), cannabis (cần sa), và các chất tương tự.",
-    "expected_context": "Nghị định 57/2022/NĐ-CP, Phụ lục I"
+    "question": "Tội tổ chức sử dụng trái phép chất ma túy theo Điều 255 Bộ luật Hình sự có mức hình phạt tù như thế nào?",
+    "expected_answer": "Tội tổ chức sử dụng trái phép chất ma túy bị phạt tù từ 02 năm đến 07 năm cho khung hình phạt cơ bản. Khung hình phạt cao nhất có thể lên đến phạt tù từ 15 năm đến 20 năm hoặc tù chung thân.",
+    "expected_context": "Bộ luật Hình sự 2015, Điều 255"
+  },
+  {
+    "question": "Người nào có hành vi cưỡng bức, dụ dỗ người khác sử dụng trái phép chất ma túy bị xử lý như thế nào theo Bộ luật Hình sự?",
+    "expected_answer": "Hành vi cưỡng bức người khác sử dụng trái phép chất ma túy bị xử phạt tù từ 02 năm đến 07 năm theo Điều 257. Hành vi dụ dỗ người khác sử dụng trái phép chất ma túy bị xử phạt tù từ 01 năm đến 05 năm theo Điều 258.",
+    "expected_context": "Bộ luật Hình sự 2015, Điều 257 và Điều 258"
+  },
+  {
+    "question": "Hành vi chứa chấp việc sử dụng trái phép chất ma túy theo Điều 256 Bộ luật Hình sự bị xử phạt như thế nào?",
+    "expected_answer": "Hành vi chứa chấp việc sử dụng trái phép chất ma túy bị phạt tù từ 02 năm đến 07 năm cho khung cơ bản. Phạm tội thuộc các trường hợp tăng nặng bị phạt tù từ 07 năm đến 15 năm.",
+    "expected_context": "Bộ luật Hình sự 2015, Điều 256"
+  },
+  {
+    "question": "Độ tuổi chịu trách nhiệm hình sự đối với tội tàng trữ trái phép chất ma túy là bao nhiêu?",
+    "expected_answer": "Người từ đủ 16 tuổi trở lên phải chịu trách nhiệm hình sự về mọi tội phạm. Người từ đủ 14 tuổi đến dưới 16 tuổi phải chịu trách nhiệm hình sự về tội phạm rất nghiêm trọng hoặc đặc biệt nghiêm trọng quy định tại Điều 249 (tàng trữ trái phép chất ma túy).",
+    "expected_context": "Bộ luật Hình sự 2015, Điều 12 và Điều 249"
+  },
+  {
+    "question": "Ca sĩ Chi Dân bị đề nghị truy tố về tội danh gì và vì hành vi nào?",
+    "expected_answer": "Ca sĩ Chi Dân bị đề nghị truy tố về tội 'Tổ chức sử dụng trái phép chất ma túy' theo khoản 2, Điều 255 Bộ luật Hình sự do có hành vi rủ rê nhóm bạn sử dụng ketamine, thuốc lắc và nước vui tại phòng nhậu của Lê Thị Triều.",
+    "expected_context": "Chi Dân cùng anh trai bị đề nghị truy tố về tội tổ chức sử dụng ma túy"
+  },
+  {
+    "question": "Anh trai của ca sĩ Chi Dân là ai và đóng vai trò gì trong vụ việc sử dụng ma túy?",
+    "expected_answer": "Anh trai ca sĩ Chi Dân là Nguyễn Trung Tín (44 tuổi). Tín bị cáo buộc đồng phạm tội 'Tổ chức sử dụng trái phép chất ma túy' khi trực tiếp liên hệ mua ma túy qua Telegram, nhận ma túy từ người giao hàng và chuẩn bị ma túy cho nhóm sử dụng.",
+    "expected_context": "Nguyễn Trung Tín là anh trai ca sĩ Chi Dân, phụ trách nhận và trả tiền mua ma túy"
+  },
+  {
+    "question": "Vụ án bắt giữ ca sĩ Chi Dân có tổng cộng bao nhiêu bị can bị đề nghị truy tố và ai giữ vai trò đầu vụ?",
+    "expected_answer": "Vụ án có tổng cộng 32 bị can bị đề nghị truy tố. Người giữ vai trò đầu vụ là Võ Thị Kim Tuyến, bị truy tố về tội 'Mua bán trái phép chất ma túy' với khối lượng hơn 1.6kg ma túy.",
+    "expected_context": "Vụ án có tổng cộng 32 bị can bị đề nghị truy tố, Võ Thị Kim Tuyến giữ vai trò đầu vụ"
+  },
+  {
+    "question": "Trước khi bị đề nghị truy tố năm 2024, ca sĩ Chi Dân đã có tiền sự gì liên quan đến ma túy chưa?",
+    "expected_answer": "Năm 2023 ca sĩ Chi Dân từng có 1 tiền sự về hành vi sử dụng trái phép chất ma túy.",
+    "expected_context": "Năm 2023 ca sĩ Chi Dân từng có 1 tiền sự về hành vi sử dụng trái phép chất ma túy"
   }
 ]
